@@ -5,7 +5,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/yo', methods=['POST'])
+@app.route('/', methods=['POST'])
 def yo_handler():
     try:
         YO_API_TOKEN = os.environ['YO_API_TOKEN']
@@ -17,7 +17,7 @@ def yo_handler():
     if 'result' in r.json() and r.json()['result'] == 'OK':
         return json.dumps({'text': 'Yo sent to team!'})
     else:
-        return json.dumps({'text': 'Error sensing Yo. Their API may be down, Yo.'})
+        return json.dumps({'text': 'Error sending Yo. Their API may be down, Yo.'})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
